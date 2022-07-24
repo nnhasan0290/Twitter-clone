@@ -9,7 +9,7 @@ const Sidebar = () => {
         alt=""
         width={50}
       />
-      <SingleMenu text="Home" Icon={HomeIcon}/>
+      <SingleMenu text="Home" Icon={HomeIcon} active/>
       <SingleMenu text="Explore" Icon={HashtagIcon}/>
       <SingleMenu text="Notification" Icon={BellIcon}/>
       <SingleMenu text="Messages" Icon={InboxIcon}/>
