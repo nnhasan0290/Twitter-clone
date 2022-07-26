@@ -4,6 +4,6 @@
 
 @Layer components{
     .hover-effect{
-        @apply hover:bg-gray-600 rounded-full p-3 transition duration-500 ease-out
+        @apply hover:bg-gray-600 rounded-full  transition duration-500 ease-out cursor-pointer
     }
 }

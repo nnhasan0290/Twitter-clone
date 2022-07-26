@@ -1,8 +1,18 @@
+
+import { SparklesIcon } from "@heroicons/react/outline";
+import Input from "./Input";
+
 const NewsFeed = () => {
-    return (
+  return (
+    <div className="">
+      <div className="flex justify-between p-3">
+        <h2 className="text-xl font-bold">Home</h2>
         <div className="">
-            <h2>This is the main newsfeed</h2>
+          <SparklesIcon className="p-2 h-10 hover-effect" />
         </div>
-    )
-}
+      </div>
+      <Input/>
+    </div>
+  );
+};
 export default NewsFeed;

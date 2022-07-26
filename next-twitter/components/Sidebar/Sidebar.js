@@ -4,10 +4,10 @@ import SingleMenu from './SingleMenu';
 const Sidebar = () => {
   return (
     <div className="py-3 pl-12 bg-black">
-      <img className="cursor-pointer hover-effect"
+      <img className="p-3 cursor-pointer hover-effect"
         src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-logo-vector-png-clipart-1.png"
         alt=""
-        width={50}
+        width={50} 
       />
       <SingleMenu text="Home" Icon={HomeIcon} active/>
       <SingleMenu text="Explore" Icon={HashtagIcon}/>

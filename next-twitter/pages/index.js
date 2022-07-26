@@ -14,10 +14,10 @@ export default function Home() {
           <Sidebar />
         </div>
         <div className="flex justify-around w-full lg:w-[75%]">
-          <div className="w-full sm:w-[70%] bg-black text-white border-x">
+          <div className="w-full sm:w-[65%] bg-black text-white border-x border-[#2f3336]">
             <NewsFeed />
           </div>
-          <div className="hidden md:flex w-[30%] bg-black text-white">
+          <div className="hidden md:flex w-[35%] bg-black text-white">
             <LatestNews />
           </div>
         </div>
