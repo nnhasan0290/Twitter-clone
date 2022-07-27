@@ -3,7 +3,7 @@ import {BellIcon, BookmarkIcon, ClipboardIcon, DotsCircleHorizontalIcon, Hashtag
 import SingleMenu from './SingleMenu';
 const Sidebar = () => {
   return (
-    <div className="py-3 pl-12 bg-black">
+    <div className="fixed py-3 pl-12 h-full bg-black">
       <img className="p-3 cursor-pointer hover-effect"
         src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-logo-vector-png-clipart-1.png"
         alt=""
