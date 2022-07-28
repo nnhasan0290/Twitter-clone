@@ -22,9 +22,9 @@ const Input = () => {
             cols="30"
             rows="1"
             placeholder="What's Happening?"
-            className="w-full text-xl tracking-wider placeholder-gray-500 bg-black border-none resize-none focus:outline-0"
+            className="w-full text-xl tracking-wider placeholder-gray-500 bg-black border-none resize-none focus:outline-0 peer"
           ></textarea>
-          <div className="flex items-center py-3 pl-2 space-x-2 border-b-[1px] border-b-[#2f3336]">
+          <div className="hidden items-center py-3 pl-2 space-x-2 border-b-[1px] border-b-[#2f3336] peer-focus:flex">
             <GlobeIcon className="h-4 text-[#1d9bf0]"/>
             <p className="font-medium text-[#1d9bf0]">Everybody can replay</p>
           </div>
