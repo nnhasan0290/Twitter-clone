@@ -2,7 +2,6 @@ import { SearchIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 
 const LatestNews = ({ newsResult, randomUser }) => {
-  console.log(randomUser);
   const [newsState, setNewsState] = useState(4);
   const [userState, setUser] = useState(4);
   return (
