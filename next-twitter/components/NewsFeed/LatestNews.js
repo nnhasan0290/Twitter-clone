@@ -2,8 +2,8 @@ import { SearchIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 
 const LatestNews = ({ newsResult, randomUser }) => {
-  const [newsState, setNewsState] = useState(4);
-  const [userState, setUser] = useState(4);
+  const [newsState, setNewsState] = useState(3);
+  const [userState, setUser] = useState(3);
   return (
     <div className="mx-6 w-full">
       <div className="sticky top-0 py-1 bg-black">
@@ -57,7 +57,7 @@ const LatestNews = ({ newsResult, randomUser }) => {
                   src={each.picture.thumbnail}
                   alt=""
                 />
-                <div className="">
+                <div className="leading-5">
                   <h3 className="p-0 m-0 font-bold truncate">
                     {each.name.first + " " + each.name.last}{" "}
                   </h3>
@@ -83,8 +83,8 @@ const LatestNews = ({ newsResult, randomUser }) => {
             Show More
           </button>
         </div>
-        <div className="font-thin text-[#95989e] traking-tighter">
-          <p>
+        <div className="font-normal capitalize text-[#95989e] tracking-tighter ">
+          <p className="text-[13px] tracking-wider">
             terms of service privacy policy cookie policy accesibility ads info
             more... <br /> twitter 2022, inc.
           </p>
