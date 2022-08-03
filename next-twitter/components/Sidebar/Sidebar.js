@@ -50,7 +50,7 @@ const Sidebar = () => {
         )}
         {session && (
           <div className="flex justify-between hover-effect items-center w-[95%]">
-            <div className="flex text-white m-2 justify-between space-x-3">
+            <div className="flex justify-between m-2 space-x-3 text-white">
               <img
                 className="rounded-full"
                 src={session.user.image}
@@ -65,7 +65,7 @@ const Sidebar = () => {
               </div>
             </div>
             <div>
-              <DotsHorizontalIcon className="h-5 text-white w-7 mr-3" />
+              <DotsHorizontalIcon className="h-5 mr-3 text-white w-7" />
             </div>
           </div>
         )}

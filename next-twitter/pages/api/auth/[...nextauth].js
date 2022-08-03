@@ -10,4 +10,12 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+
+  callbacks: {
+    async session({ session, token, user }) {
+      session.user.uid = token.sub;
+      session.user.username = "@" + session.user.name.replace(" ", "");
+      return session;
+    },
+  },
 });
