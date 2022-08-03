@@ -25,11 +25,14 @@ const Input = () => {
   const [inputImg, setInputImg] = useState(null);
   const [showEmoji, setShowEmoji] = useState(false);
   const file_picker_ref = useRef(null);
+  const [loading, setLoading] = useState(false);
+  console.log(loading);
 
   {
     /* ==================== Method =====================*/
   }
   const sendPost = async () => {
+    setLoading(true);
     const docRef = await addDoc(collection(db, "posts"), {
       creatorId: session.user.uid,
       creatorName: session.user.name,
@@ -53,6 +56,7 @@ const Input = () => {
 
     setInputVal("");
     setInputImg(null);
+    setLoading(false);
   };
   return (
     <>
@@ -89,7 +93,11 @@ const Input = () => {
                       setInputImg(null);
                     }}
                   />
-                  <img src={inputImg} alt="" className="rounded-lg" />
+                  <img
+                    src={inputImg}
+                    alt=""
+                    className={`rounded-lg ${loading && "animate-pulse"}`}
+                  />
                 </div>
               )}
 
@@ -106,50 +114,52 @@ const Input = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-between my-3">
-              <div className="flex space-x-2 cursor-pointer">
+            {!loading && (
+              <div className="flex items-center justify-between my-3">
+                <div className="flex space-x-2 cursor-pointer">
+                  <div>
+                    <PhotographIcon
+                      className="h-5 text-[#1d9bf0]"
+                      onClick={(e) => {
+                        file_picker_ref.current.click();
+                      }}
+                    />
+                    <input
+                      hidden
+                      type="file"
+                      name="post-img"
+                      id="post-img"
+                      ref={file_picker_ref}
+                      onChange={(e) => {
+                        let reader = new FileReader();
+                        if (e.target.files[0]) {
+                          reader.readAsDataURL(e.target.files[0]);
+                        }
+                        reader.onload = (readerEvent) => {
+                          setInputImg(readerEvent.target.result);
+                        };
+                      }}
+                    />
+                  </div>
+                  <div
+                    onClick={() => {
+                      setShowEmoji(!showEmoji);
+                    }}
+                  >
+                    <EmojiHappyIcon className="h-5 text-[#1d9bf0]" />
+                  </div>
+                </div>
                 <div>
-                  <PhotographIcon
-                    className="h-5 text-[#1d9bf0]"
-                    onClick={(e) => {
-                      file_picker_ref.current.click();
-                    }}
-                  />
-                  <input
-                    hidden
-                    type="file"
-                    name="post-img"
-                    id="post-img"
-                    ref={file_picker_ref}
-                    onChange={(e) => {
-                      let reader = new FileReader();
-                      if (e.target.files[0]) {
-                        reader.readAsDataURL(e.target.files[0]);
-                      }
-                      reader.onload = (readerEvent) => {
-                        setInputImg(readerEvent.target.result);
-                      };
-                    }}
-                  />
-                </div>
-                <div
-                  onClick={() => {
-                    setShowEmoji(!showEmoji);
-                  }}
-                >
-                  <EmojiHappyIcon className="h-5 text-[#1d9bf0]" />
+                  <button
+                    onClick={sendPost}
+                    disabled={!inputVal.trim()}
+                    className="px-3 py-1.5 font-medium bg-[#1d9bf0] rounded-full tacking-wider disabled:opacity-50 hover:brightness-90"
+                  >
+                    Tweet
+                  </button>
                 </div>
               </div>
-              <div>
-                <button
-                  onClick={sendPost}
-                  disabled={!inputVal.trim()}
-                  className="px-3 py-1.5 font-medium bg-[#1d9bf0] rounded-full tacking-wider disabled:opacity-50 hover:brightness-90"
-                >
-                  Tweet
-                </button>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       )}

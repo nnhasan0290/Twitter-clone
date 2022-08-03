@@ -1,8 +1,27 @@
 import { SparklesIcon } from "@heroicons/react/outline";
+import {
+  onSnapshot,
+  collection,
+  query,
+  orderBy,
+  doc,
+  getDocs,
+} from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { db } from "../../firebase";
 import Input from "./Input";
 import Post from "./Post";
 
 const NewsFeed = () => {
+  const [post, setPost] = useState([]);
+  useEffect(
+    () =>
+      onSnapshot(query(collection(db, "posts")), (snapshot) => {
+        console.log(snapshot.docs, "snapshot");
+        setPost(snapshot.docs);
+      }),
+    []
+  );
   const posts = [
     {
       id: 1,
