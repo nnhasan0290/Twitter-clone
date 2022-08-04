@@ -26,19 +26,20 @@ const Input = () => {
   const [showEmoji, setShowEmoji] = useState(false);
   const file_picker_ref = useRef(null);
   const [loading, setLoading] = useState(false);
-  console.log(loading);
 
   {
     /* ==================== Method =====================*/
   }
   const sendPost = async () => {
+    setShowEmoji(false);
     setLoading(true);
     const docRef = await addDoc(collection(db, "posts"), {
-      creatorId: session.user.uid,
-      creatorName: session.user.name,
+      id: session.user.uid,
+      name: session.user.name,
       text: inputVal,
-      timeStamp: serverTimestamp(),
+      timestamp: serverTimestamp(),
       username: session.user.username,
+      userImg: session.user.image,
     });
 
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
@@ -96,7 +97,9 @@ const Input = () => {
                   <img
                     src={inputImg}
                     alt=""
-                    className={`rounded-lg ${loading && "animate-pulse"}`}
+                    className={`rounded-lg ${
+                      loading && "animate-pulse"
+                    } max-h-[300px]`}
                   />
                 </div>
               )}
@@ -121,6 +124,7 @@ const Input = () => {
                     <PhotographIcon
                       className="h-5 text-[#1d9bf0]"
                       onClick={(e) => {
+                        setShowEmoji(false);
                         file_picker_ref.current.click();
                       }}
                     />
@@ -167,10 +171,14 @@ const Input = () => {
         <div className="absolute max-w-[300px]">
           <Picker
             data={data}
+            onClickOutside={!showEmoji}
             onEmojiSelect={(e) => {
-              console.log(e);
-              let emoji = String.fromCodePoint("0x" + e.unified);
-              setInputVal(inputVal + emoji);
+              try {
+                let emoji = String.fromCodePoint("0x" + e.unified);
+                setInputVal(inputVal + emoji);
+              } catch (error) {
+                console.log(error);
+              }
             }}
             theme="dark"
           ></Picker>

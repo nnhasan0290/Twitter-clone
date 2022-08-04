@@ -15,7 +15,6 @@ import { useSession, signIn } from "next-auth/react";
 
 const Sidebar = () => {
   const { data: session } = useSession();
-  console.log(session);
   return (
     <div className="fixed top-0 bottom-0 w-[25%] h-full py-3 pl-12 overflow-auto bg-black">
       <div>
@@ -35,7 +34,7 @@ const Sidebar = () => {
             <SingleMenu text="List" Icon={ClipboardIcon} />
             <SingleMenu text="Profile" Icon={UserIcon} />
             <SingleMenu text="More" Icon={DotsCircleHorizontalIcon} />
-            <button className="w-[86%] p-3 text-xl font-medium text-center text-white bg-[#1d9bf0] rounded-full mt-2 mb-4">
+            <button className="w-[86%] p-3 text-xl font-medium text-center text-white bg-[#1d9bf0] rounded-full mt-2 mb-4 hover:brightness-95">
               Tweet
             </button>
           </>
@@ -43,7 +42,7 @@ const Sidebar = () => {
         {!session && (
           <button
             onClick={signIn}
-            className="w-[80%] p-3 text-xl font-medium text-center text-white bg-[#1d9bf0] rounded-full mt-2 mb-4"
+            className="w-[80%] p-3 text-xl font-medium text-center text-white bg-[#1d9bf0] rounded-full mt-2 mb-4 hover:brightness-95"
           >
             Sign In
           </button>
