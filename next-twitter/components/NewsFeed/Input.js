@@ -62,7 +62,7 @@ const Input = () => {
   return (
     <>
       {session && (
-        <div className="flex px-3 space-x-3 border-b-[#2f3336] border-b">
+        <div className="flex px-3 space-x-3 border-b-[#2f3336] border-b ">
           <div>
             <Image
               src={session.user.image}

@@ -12,16 +12,17 @@ import { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import Input from "./Input";
 import Post from "./Post";
+import { useRecoilState } from "recoil";
+import { modalState } from "../../Atom/modalState";
 
 const NewsFeed = () => {
   const [posts, setPost] = useState([]);
-  console.log(posts);
+  const [open, setOpen] = useRecoilState(modalState);
   useEffect(
     () =>
       onSnapshot(
         query(collection(db, "posts"), orderBy("timestamp", "desc")),
         (snapshot) => {
-          console.log(snapshot.docs, "snapshot");
           setPost(snapshot.docs);
         }
       ),
@@ -30,7 +31,11 @@ const NewsFeed = () => {
 
   return (
     <div className="">
-      <div className="z-10 flex sticky top-0 justify-between px-2 pt-2 pb-1 backdrop-filter backdrop-blur-md backdrop-saturate-50">
+      <div
+        className={`${
+          !open && "z-10 "
+        }flex sticky top-0 justify-between px-2 pt-2 pb-1 backdrop-filter backdrop-blur-md backdrop-saturate-50`}
+      >
         <h2 className="text-xl font-bold">Home</h2>
         <div className="">
           <SparklesIcon className="p-2 h-10 hover-effect" />
