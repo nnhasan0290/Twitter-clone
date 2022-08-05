@@ -12,10 +12,10 @@ export default function Home({ newsResult, randomUser }) {
         <title>Twitter Clone</title>
       </Head>
       <div className="flex bg-black">
-        <div className="w-[25%] hidden lg:flex bg-black min-h-screen">
+        <div className="  lg:flex bg-black lg:min-h-screen hidden lg:flex">
           <Sidebar />
         </div>
-        <div className="flex justify-around w-full lg:w-[75%]">
+        <div className="flex justify-around w-full  lg:ml-[25%]">
           <div className="w-full sm:w-[60%] bg-black text-white border-x border-[#2f3336]">
             <NewsFeed />
           </div>

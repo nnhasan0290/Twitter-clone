@@ -16,7 +16,7 @@ import { useSession, signIn } from "next-auth/react";
 const Sidebar = () => {
   const { data: session } = useSession();
   return (
-    <div className="fixed top-0 bottom-0 w-[25%] h-full py-3 pl-12 overflow-auto bg-black">
+    <div className=" lg:top-0 bottom-0 lg:w-[25%] fixed lg:h-full py-3 pl-12 lg:overflow-auto bg-black">
       <div>
         <img
           className="p-3 cursor-pointer hover-effect"
