@@ -5,10 +5,10 @@ const LatestNews = ({ newsResult, randomUser }) => {
   const [newsState, setNewsState] = useState(3);
   const [userState, setUser] = useState(3);
   return (
-    <div className="mx-6 w-full">
+    <div className="w-full mx-6">
       <div className="sticky top-0 py-1 bg-black">
         <div className="flex bg-[#202327] p-2 space-x-3 rounded-full">
-          <SearchIcon className="px-1 h-6 text-gray-600" />
+          <SearchIcon className="h-6 px-1 text-gray-600" />
           <input
             className="bg-[#202327] w-full focus:outline-none"
             type="text"
@@ -16,7 +16,7 @@ const LatestNews = ({ newsResult, randomUser }) => {
           />
         </div>
       </div>
-      <div className="box-border overflow-y-auto fixed bottom-0 top-12 mr-6 no-scrollbar">
+      <div className="box-border fixed bottom-0 mr-6 overflow-y-auto top-12 no-scrollbar">
         <div className="bg-[#202327] p-4 rounded-xl my-2">
           <div className="py-2 text-xl font-bold">
             <h2>What's happening</h2>
@@ -50,7 +50,10 @@ const LatestNews = ({ newsResult, randomUser }) => {
             <h2>Who To Follow</h2>
           </div>
           {randomUser.slice(0, userState).map((each, i) => (
-            <div className="flex justify-between items-center p-4 hover:cursor-pointer hover:bg-[#2c2e30] transition duration-300 ease-in">
+            <div
+              key={i}
+              className="flex justify-between items-center p-4 hover:cursor-pointer hover:bg-[#2c2e30] transition duration-300 ease-in"
+            >
               <div className="flex items-center space-x-3">
                 <img
                   className="w-[45px] rounded-full"
